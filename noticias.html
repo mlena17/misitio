@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            background-color: #58B2AF;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .menu a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .jumbotron {
+            background-color: #58B2AF;
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .carousel-indicators li {
+            border-color: #58B2AF;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            color: #58B2AF;
+        }
+
+        .news-text {
+            background-color: rgba(88, 178, 175, 0.9);
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .modal-text {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="equipo.html">Equipo</a>
+        <a href="noticias.html">Noticias</a>
+    </div>
+
+    <div class="jumbotron">
+        <h1>Últimas Noticias</h1>
+    </div>
+
+    <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#newsCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#newsCarousel" data-slide-to="1"></li>
+            <li data-target="#newsCarousel" data-slide-to="2"></li>
+            <li data-target="#newsCarousel" data-slide-to="3"></li>
+            <li data-target="#newsCarousel" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/noticia1.jpg" class="d-block w-100" alt="Noticia 1">
+                <div class="carousel-caption news-text">
+                    <h3>Noticia 1</h3>
+                    <p>Texto de la Noticia 1. <a href="#" data-toggle="modal" data-target="#modal1">Ver más</a></p>
+                </div>
+            </div>
+            <!-- Resto de las noticias -->
+        </div>
+        <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+
+    <!-- Modals -->
+    <!-- Modal 1 -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <img src="images/noticia1.jpg" class="modal-img" alt="Noticia 1">
+            <div class="modal-text">
+                <h2>Noticia 1</h2>
+                <p>Texto detallado de la Noticia 1.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Modals para otras noticias -->
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        // Mostrar modal al hacer clic en "Ver más"
+        var modals = document.querySelectorAll('.modal');
+        var links = document.querySelectorAll('[data-toggle="modal"]');
+
+        links.forEach(function(link, index) {
+            link.addEventListener('click', function() {
+                modals[index].style.display = 'block';
+            });
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        modals.forEach(function(modal) {
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
